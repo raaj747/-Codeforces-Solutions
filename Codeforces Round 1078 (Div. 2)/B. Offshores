@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int  llu;
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+        int n;
+        ll x,y;
+        cin>>n>>x>>y;
+ 
+        vector<ll> a(n);
+        ll sum=0;
+        ll f=0;
+ 
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+            sum +=a[i];
+            f += a[i]/x;
+        }
+ 
+        ll ans=0;
+        for(int i=0;i<n;i++){
+            ll ex= f-(a[i]/x);
+            ll t=min((sum - a[i])/x,ex);
+            ans=max(ans,a[i]+y * t);
+        }
+ 
+        cout<<ans<<endl;
+  }
+}
