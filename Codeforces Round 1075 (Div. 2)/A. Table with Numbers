@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        int a, b, c;
+        cin >> a >> b >> c;
+ 
+        int both = 0, row = 0, col = 0;
+        int m = min(b, c);
+ 
+        for(int i=0; i<a; i++){
+            int x;
+            cin>>x;
+            if(x <= m) 
+                both++;
+            else if(x <= b) 
+                row++;
+            else if(x <= c) 
+                col++;
+        }
+ 
+        int ans = 0;
+ 
+        int x = min(row, col);
+        ans += x;
+        row -= x;
+        col -= x;
+ 
+        x = min(both, row);
+        ans += x;
+        both -= x;
+ 
+        x = min(both, col);
+        ans += x;
+        both -= x;
+        ans += both/2;
+ 
+        cout<< ans << endl;
+    }
+}
