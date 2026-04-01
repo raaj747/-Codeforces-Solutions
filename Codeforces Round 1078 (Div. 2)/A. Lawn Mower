@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int  llu;
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+        ll a, b;
+        cin>>a>>b;
+ 
+        if(a<b){
+            cout<<a<<endl;
+        }else{
+            ll c=(a-(b-1)+b-1)/ b;
+            cout<<a-c<<endl;
+ 
+        }
+ 
+  }
+}
