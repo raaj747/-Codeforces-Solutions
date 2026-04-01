@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int  llu;
+ 
+ll sum(ll n)
+{
+    ll s=0;
+    while(n>0)
+    {
+        s+=n%10;
+        n/=10;
+    }
+    return s;
+}
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll x;
+        cin>>x;
+ 
+        ll cnt=0;
+        for(ll i=x+1;i<=x+81;i++)
+        {
+            if(i-sum(i) == x)
+                cnt++;
+        }
+ 
+        cout<<cnt<<endl;
+    }
+}
