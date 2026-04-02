@@ -1,0 +1,374 @@
+/*
+   In the name of Almighty Allah
+     ___   __      __  ____            _
+    /   \  \ \    / /   __ \   /\     | |
+   / /_\ \  \ \  / /  | |__) | /  \   | | -> 2 greedy or not 2 greedy that is the question -> 2211421
+  /  ___  \  \ \/ /   |  _  / / /\ \  | |
+ / _/   \_ \  \  /    | | \ \/ ____ \_| |
+|___|   |___|  \/     |_|  \_\/    \_\__/
+ 
+ 
+*/
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+ 
+// ================= PBDS =================
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+ 
+// ================= TYPEDEFS =================
+typedef long long ll;
+typedef unsigned long long llu;
+typedef double d;
+ 
+using vi = vector<int>;
+using vll = vector<ll>;
+using vc = vector<char>;
+using vd = vector<double>;
+using vb = vector<bool>;
+ 
+using si = set<int>;
+using sll = set<ll>;
+using sc = set<char>;
+ 
+using usi = unordered_set<int>;
+using usll = unordered_set<ll>;
+using usc = unordered_set<char>;
+ 
+using mi = map<int, int>;
+using mll = map<ll, ll>;
+using mc = map<char, int>;
+ 
+using msi = multiset<int>;
+using msll = multiset<ll>;
+ 
+using umi = unordered_map<int, int>;
+using umll = unordered_map<ll, ll>;
+using umc = unordered_map<char, int>;
+ 
+using mmi = multimap<int, int>;
+using mmll = multimap<ll, ll>;
+ 
+using pii = pair<int,int>;
+using pll = pair<ll,ll>;
+ 
+// ================= PBDS =================
+typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+ 
+// ================= CONSTANTS =================
+const char nl = '\n';
+#define mod1 1000000007
+#define mod2 998244353
+#define pi 3.1415926535897932384626
+ 
+// ================= MACROS =================
+#define pb push_back
+#define pf push_front
+#define ppb pop_back
+#define ppf pop_front
+ 
+#define cY cout << "YES\n"
+#define cy cout << "Yes\n"
+#define cN cout << "NO\n"
+#define cn cout << "No\n"
+ 
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) (int)(x).size()
+ 
+#define cinv(v) for(auto &x : v) cin >> x;
+#define coutv(v) for(auto x : v) cout << x << " "; cout << nl;
+ 
+#define lb lower_bound
+#define ub upper_bound
+ 
+// ================= DEBUG =================
+#ifndef ONLINE_JUDGE
+#define debug(x) cerr << #x << " = " << x << nl;
+#else
+#define debug(x)
+#endif
+ 
+// ================= MATH =================
+ll gcd(ll a, ll b) { return __gcd(a, b); }
+ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
+ 
+ll binpow(ll a, ll b, ll mod = mod1)
+{
+    a %= mod;
+    ll res = 1;
+    while(b)
+    {
+        if(b & 1) res = (res * a) % mod;
+        a = (a * a) % mod;
+        b >>= 1;
+    }
+    return res;
+}
+ 
+ll modinv(ll a, ll mod = mod1)
+{
+    return binpow(a, mod - 2, mod);
+}
+ 
+ 
+//int n;cin >> n;
+//if(isPrime(n)) cY;
+//else cN;
+int isPrime(int n)
+{
+    if(n < 2) return 0;
+    if(n == 2 || n == 3) return 1;
+    if(n % 2 == 0) return 0;
+ 
+    for(int i = 3; i * i <= n; i += 2)
+    {
+        if(n % i == 0)
+            return 0;
+    }
+    return 1;
+}
+ 
+// ================= BIT =================
+#define setbit(x, pos) (x | (1LL << pos))
+#define clearbit(x, pos) (x & ~(1LL << pos))
+#define checkbit(x, pos) (x & (1LL << pos))
+ 
+// ================= GRID =================
+//  King's Move (8 directions: U, D, L, R + diagonals)
+// Use for flood fill, BFS/DFS on grid, island problems
+const int dx8[] = {0, 0, 1, -1, -1,  1, -1, 1};
+const int dy8[] = {-1, 1, 0, 0,  1,  1, -1, -1};
+ 
+//  4-directional move (ONLY up, down, left, right)
+// Uncomment if you want simpler movement
+const int dx4[] = {0, 0, 1, -1};
+const int dy4[] = {-1, 1, 0, 0};
+ 
+//  Knight's Move (Chess knight L-shape)
+// Use for shortest path on chessboard/grid knight problems
+const int dxK[] = {-2, -2, -1, -1,  1,  1,  2,  2};
+const int dyK[] = {-1,  1, -2,  2, -2,  2, -1,  1};
+ 
+// ================= USAGE =================
+// for(int i = 0; i < 8; i++){
+//     int nx = x + dx8[i];
+//     int ny = y + dy8[i];
+// }
+ 
+// ================= RANDOM =================
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+ 
+// ================= DSU =================
+struct DSU {
+    vi parent, sz;
+    DSU(int n) {
+        parent.resize(n+1);
+        sz.resize(n+1, 1);
+        iota(all(parent), 0);
+    }
+    int find(int x) {
+        if(parent[x] == x) return x;
+        return parent[x] = find(parent[x]);
+    }
+    void unite(int a, int b) {
+        a = find(a);
+        b = find(b);
+        if(a != b) {
+            if(sz[a] < sz[b]) swap(a,b);
+            parent[b] = a;
+            sz[a] += sz[b];
+        }
+    }
+};
+ 
+// ================= GRAPH =================
+void bfs(int start, vector<vi> &adj, vi &vis)
+{
+    queue<int> q;
+    q.push(start);
+    vis[start] = 1;
+ 
+    while(!q.empty())
+    {
+        int u = q.front(); q.pop();
+        for(auto v : adj[u])
+        {
+            if(!vis[v])
+            {
+                vis[v] = 1;
+                q.push(v);
+            }
+        }
+    }
+}
+ 
+void dfs(int u, vector<vi> &adj, vi &vis)
+{
+    vis[u] = 1;
+    for(auto v : adj[u])
+        if(!vis[v]) dfs(v, adj, vis);
+}
+ 
+// ================= DIJKSTRA =================
+vector<ll> dijkstra(int n, vector<vector<pair<int,int>>> &adj, int src)
+{
+    vector<ll> dist(n+1, LLONG_MAX);
+    priority_queue<pair<ll,ll>, vector<pair<ll,ll>>, greater<pair<ll,ll>>> pq;
+ 
+    dist[src] = 0;
+    pq.push({0, src});
+ 
+    while(!pq.empty())
+    {
+        auto [d, u] = pq.top(); pq.pop();
+        if(d > dist[u]) continue;
+ 
+        for(auto [v, w] : adj[u])
+        {
+            if(dist[v] > d + w)
+            {
+                dist[v] = d + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+ 
+// ================= BINARY SEARCH =================
+    //vi v(n);
+    //cinv(v);
+    //sort(all(v));
+ 
+int bs(vi &v, int x)
+{
+    int l = 0, r = (int)v.size() - 1;
+    while(l <= r)
+    {
+        int mid = (l + r) / 2;
+        if(v[mid] == x) return mid;
+        else if(v[mid] < x) l = mid + 1;
+        else r = mid - 1;
+    }
+    return -1;
+}
+ 
+// ================= STACK / QUEUE / HEAP =================
+stack<ll> st;
+queue<ll> q;
+deque<ll> dq;
+ 
+// max heap
+priority_queue<ll> pq;
+ 
+// min heap
+priority_queue<ll, vector<ll>, greater<ll>> pq_min;
+ 
+// pair min heap (very important for Dijkstra)
+priority_queue<pair<ll,ll>, vector<pair<ll,ll>>, greater<pair<ll,ll>>> pq_pair;
+ 
+// ================= PREFIX SUM =================
+vi prefix_sum(vi &v)
+{
+    int n = v.size();
+    vi pre(n);
+    pre[0] = v[0];
+    for(int i=1;i<n;i++)
+        pre[i] = pre[i-1] + v[i];
+    return pre;
+}
+ 
+/*
+================= CUSTOM HASH =================
+Use with unordered_map / unordered_set to avoid TLE from hacking
+ 
+Example:
+unordered_map<long long, int, custom_hash> mp;
+unordered_set<long long, custom_hash> st;
+*/
+ 
+struct custom_hash {
+    static uint64_t splitmix64(uint64_t x) {
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+ 
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM =
+            chrono::steady_clock::now().time_since_epoch().count();
+ 
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+ 
+// ================= SIEVE =================
+const int N = 1e6+5;
+vb is_prime(N, true);
+ 
+void sieve()
+{
+    is_prime[0] = is_prime[1] = false;
+    for(int i=2;i*i<N;i++)
+        if(is_prime[i])
+            for(int j=i*i;j<N;j+=i)
+                is_prime[j] = false;
+}
+ 
+// ================= CUSTOM SORT =================
+bool cmp(pii a, pii b)
+{
+    if(a.first == b.first)
+        return a.second < b.second;
+    return a.first > b.first;
+}
+ 
+// ================= SOLVE =================
+void solve()
+{
+    int n;
+    cin>>n;
+    vi v(n);cinv(v);
+ 
+    if(n==1)
+    {
+        cout<<1<<nl;
+        return;
+    }
+ 
+    for(int i=0;i<n;i++)
+    {
+        cout<<2<<" ";
+    }
+ 
+    cout<<nl;
+ 
+ 
+ 
+ 
+}
+ 
+// ================= MAIN =================
+int32_t main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+ 
+    int t;cin >> t;while(t--){
+        solve();
+    }
+ 
+    return 0;
+}
+ 
+ 
+/*
+-------------------------------------
+ Coded by : S M Rafiujjaman Raj
+-------------------------------------
+*/
