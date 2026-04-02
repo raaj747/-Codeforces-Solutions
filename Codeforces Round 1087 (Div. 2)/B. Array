@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int llu;
+typedef double d;
+typedef string ss;
+ 
+const char nl = '\n';
+ 
+using vi = vector<int>;
+using vll = vector<long long>;
+using vc = vector<char>;
+using vd = vector<double>;
+using vb = vector<bool>;
+using si = set<int>;
+using sll = set<long long>;
+using sc = set<char>;
+using usi = unordered_set<int>;
+using usll = unordered_set<long long>;
+using usc = unordered_set<char>;
+ 
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+        int n;
+        cin>>n;
+        vll a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+ 
+        for(int i=0;i<n;i++){
+            int left=0;
+            int right=0;
+            int ans=0;
+            for(int j=i+1;j<n;j++)
+            {
+                if(a[j]>a[i])
+                {
+                    left++;
+                }
+                else if(a[j]<a[i])
+                {
+                    right++;
+                }
+                ans=max(left,right);
+            }
+            cout<<ans<<" ";
+        }
+        cout<<nl;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   }
+ 
+}
