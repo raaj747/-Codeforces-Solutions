@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int llu;
+ 
+const char nl='\n';
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+ 
+        int n;
+        string s;
+        cin>>n>>s;
+        stack<char> st;
+        for(char c:s){
+            if(!st.empty() && st.top() == c){
+                st.pop();
+            } else {
+                st.push(c);
+            }
+        }
+ 
+        if(st.empty())
+            cout<<"YES"<<nl;
+        else
+            cout<<"NO"<<nl;
+    }
+ 
+
+ 
+ }
+
+
+
