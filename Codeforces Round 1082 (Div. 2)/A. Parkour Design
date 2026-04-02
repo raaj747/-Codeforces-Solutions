@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int llu;
+ 
+const char nl='\n';
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+ 
+        ll x,y;
+        cin>>x>>y;
+ 
+        ll val=x-2LL*y;
+ 
+        if(val<0 || val%3 != 0){
+            cout<<"NO"<<nl;
+            continue;
+        }
+ 
+        ll k=val/3;
+ 
+        ll lower=max(0LL,-y);
+        ll upper=k/2;
+ 
+        if(lower<=upper)
+            cout<<"YES"<<nl;
+        else
+            cout<<"NO"<<nl;
+ 
+ 
+ 
+ 
+   }
+ 
+}
