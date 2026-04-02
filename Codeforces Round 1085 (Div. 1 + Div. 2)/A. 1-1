@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int llu;
+ 
+const char nl='\n';
+ 
+using vi = vector<int>;
+using vll = vector<long long>;
+using si = set<int>;
+using sll = set<long long>;
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+ 
+      int n;
+      cin>>n;
+      string s;
+      cin>>s;
+      string t=s;
+      for(int i=1;i<n-1;i++)
+      {
+          if(s[i-1]=='1' && s[i+1]=='1')
+          {
+            s[i]='1';
+          }
+      }
+      int mx_cnt=0;
+      for(auto x:s)
+      {
+        if(x=='1')
+            mx_cnt++;
+      }
+      for(int i=1;i<n-1;i++){
+         if(s[i-1]=='1' && s[i+1]=='1')
+         {
+            s[i]='0';
+         }
+      }
+      int mn_cnt=0;
+      for(auto x:s)
+      {
+        if(x=='1')
+            mn_cnt++;
+      }
+      cout<<mn_cnt<<" "<<mx_cnt<<nl;
+ 
+
+
+
+
+
+ 
+   }
+  
+ 
+}
