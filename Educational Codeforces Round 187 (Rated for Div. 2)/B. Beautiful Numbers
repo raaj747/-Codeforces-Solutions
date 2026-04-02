@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long int ll;
+typedef unsigned long long int llu;
+ 
+const char nl='\n';
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+        string s;
+        cin>>s;
+        vector<int> digit;
+        ll sum=0;
+ 
+        for(char c:s){
+            int d=c-'0';
+            digit.push_back(d);
+            sum+=d;
+        }
+ 
+        if(sum<=9){
+            cout<<0<<nl;
+            continue;
+        }
+ 
+        int mv=0;
+        int n=digit.size();
+ 
+        vector<pair<int,int>> d;
+        for(int i=0;i<n;i++)
+            d.push_back({digit[i],i});
+        sort(d.rbegin(),d.rend());
+ 
+        for(auto [val,idx]:d){
+            if(sum<=9)
+                break;
+ 
+            int reduce;
+            if(idx == 0){
+                reduce=digit[idx]-1;
+            }else{
+                reduce=digit[idx];
+            }
+ 
+            sum-=reduce;
+            mv++;
+        }
+ 
+        cout<<mv<<nl;
+ 
+ 
+ 
+ 
+ 
+   }
+ 
+}
+ 
