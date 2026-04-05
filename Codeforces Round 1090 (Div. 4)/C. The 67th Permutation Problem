@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+const char nl='\n';
+using vi = vector<int>;
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+ 
+       int n;
+       cin>>n;
+ 
+       vi v(3*n+1);
+       int cnt=1;
+       for(int i=1;i<=3*n;i+=3)
+       {
+           v[i]=cnt++;
+       }
+ 
+       for(int i=2;i<=3*n;i++)
+       {
+           if(v[i]==0)
+           {
+               v[i]=cnt++;
+           }
+       }
+ 
+       for(int i=1;i<=3*n;i++)
+       {
+           cout<<v[i]<<" ";
+       }
+ 
+       cout<<nl;
+ 
+ 
+ 
+ 
+ 
+    }
+ 
+}
