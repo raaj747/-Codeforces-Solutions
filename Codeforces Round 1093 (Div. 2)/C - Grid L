@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+const char nl='\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+ 
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+ 
+        int p,q;
+        cin>>p>>q;
+ 
+        int stick=p+2*q;
+        bool found=false;
+ 
+        for(int n=0;n*n<=stick;n++)
+        {
+            int rem=stick-n;
+ 
+            if((2*n+1)==0)
+                continue;
+ 
+            if(rem%(2*n+1)!=0)
+                continue;
+ 
+            int m=rem/(2*n+1);
+            if((n+1)*m+(m+1)*n==stick && abs(n-m)<=p)
+            {
+                cout<<n<<" "<<m<<nl;
+                found=true;
+                break;
+            }
+        }
+ 
+        if(!found)
+        {
+            cout<<-1<<nl;
+        }
+ 
+ 
+    }
+ 
+}
