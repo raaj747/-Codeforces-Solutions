@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+const char nl='\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+ 
+ 
+ 
+ 
+int cost(string s)
+{
+    int a=0, b=0;
+    for(char c:s)
+    {
+        if(c=='R')
+        {
+            a++;
+        }
+        else
+        {
+            b++;
+        }
+    }
+    return min(a, b);
+}
+ 
+void solve()
+{
+    int n;
+    cin>>n;
+ 
+    string a,b;
+    cin>>a>>b;
+ 
+    vi dp(n+1,1e9);
+    dp[0]=0;
+ 
+    for(int i=1;i<=n;i++)
+    {
+        int v=(a[i-1] != b[i-1]);
+ 
+        dp[i]=min(dp[i], dp[i-1]+v);
+ 
+        if(i>=2)
+        {
+            int x=(a[i-2]!=a[i-1]);
+ 
+            int y=(b[i-2]!=b[i-1]);
+ 
+            dp[i]=min(dp[i], dp[i-2]+x+y);
+        }
+    }
+ 
+    cout<<dp[n]<<nl;
+}
+ 
+int main()
+{
+ 
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+ 
+ 
+}
