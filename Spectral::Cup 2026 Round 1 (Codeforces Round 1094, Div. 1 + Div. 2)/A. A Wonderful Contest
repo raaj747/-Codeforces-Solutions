@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+
+        vi a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+
+        vi v;
+        for(int i=0;i<n;i++)
+        {
+            int diff=100/a[i];
+            for(int j=0;j<a[i];j++)
+            {
+                v.push_back(diff);
+            }
+        }
+
+        sort(v.begin(),v.end());
+
+        int total=0;
+        bool ok=true;
+
+        for(int c:v)
+        {
+            if(c>total+1)
+            {
+                ok=false;
+                break;
+            }
+            total+=c;
+        }
+
+        if(ok)
+        {
+            cout<<"Yes"<<nl;
+        }
+        else
+        {
+            cout<<"No"<<nl;
+        }
+
+
+
+
+    }
+
+}
