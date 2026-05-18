@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        ll n,a,b;
+        cin>>n>>a>>b;
+
+        ll ans=(n/3)* min(3*a,b);
+
+        ll rem=n%3;
+
+        ans+=min(rem*a,b);
+
+        cout<<ans<<nl;
+
+
+
+
+
+    }
+
+}
