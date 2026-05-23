@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        vi a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+
+        int mn=a[0];
+        int mx=a[0];
+
+        for(int i=1;i<n;i++)
+        {
+
+            if(a[i]<mn)
+            {
+                mn=a[i];
+            }
+
+            if(a[i]>mx)
+            {
+                mx=a[i];
+            }
+
+
+        }
+
+        int ans=(mx-mn+1)/2;
+
+        cout<<ans<<nl;
+
+
+
+
+
+    }
+
+}
