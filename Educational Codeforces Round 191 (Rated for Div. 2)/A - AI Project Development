@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        ll n,x,y,z;
+        cin>>n>>x>>y>>z;
+
+        ll a=0;
+        ll b=0;
+        while(a<n)
+        {
+            a+=x+y;
+            b++;
+
+
+        }
+
+        ll c=0;
+        ll d=0;
+        while(c<n)
+        {
+            d++;
+            if(d<=z)
+            {
+                c+=x;
+            }
+            else
+            {
+                c+=x+10*y;
+            }
+
+
+
+        }
+
+        ll ans=min(b,d);
+
+
+        cout<<ans<<nl;
+
+
+
+
+
+
+    }
+
+}
