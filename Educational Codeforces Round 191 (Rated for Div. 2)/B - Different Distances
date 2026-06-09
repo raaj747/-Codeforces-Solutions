@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        if(n%2==0)
+        {
+
+            for(int i=1;i<=n;i++)
+            {
+                cout<<i<<' ';
+            }
+
+            for(int i=n;i>=1;i--)
+            {
+                cout<<i<<' ';
+            }
+
+            for(int i=1;i<=n;i++)
+            {
+                cout<<i<<' ';
+            }
+
+            for(int i=1;i<=n;i++)
+            {
+                cout<<i<<' ';
+            }
+
+
+
+        }
+        else
+        {
+
+            for(int i=1;i<=n;i++)
+            {
+                cout<<i<<' ';
+            }
+
+            for(int i=n;i>=1;i--)
+            {
+                cout<<i<<' ';
+            }
+
+            int cnt=n-1;
+            cout<<cnt<<' '<<n<<' ';
+
+            for(int i=1;i<=n-2;i++)
+            {
+                cout<<i<<' ';
+            }
+
+            cout<<n<<' ';
+
+            for(int i=1;i<=n-1;i++)
+            {
+                cout<<i<<' ';
+            }
+
+
+        }
+
+        cout<<nl;
+
+
+
+
+
+
+    }
+
+}
