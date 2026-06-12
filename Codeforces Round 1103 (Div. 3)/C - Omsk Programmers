@@ -1,0 +1,87 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        long long a,b,x;
+        cin>>a>>b>>x;
+
+        vector<pair<ll,ll>>c,d;
+
+        ll cnt=a;
+        ll ans=0;
+        while(true)
+        {
+            c.push_back({cnt,ans});
+            if(cnt==0)
+            {
+                break;
+            }
+            cnt/=x;
+            ans++;
+
+
+
+        }
+
+        cnt=b;
+        ans=0;
+        while(true)
+        {
+
+            d.push_back({cnt,ans});
+            if(cnt==0)
+            {
+                break;
+            }
+            cnt/=x;
+            ans++;
+
+
+
+        }
+
+        ll res=LLONG_MAX;
+        for(auto &i:c)
+        {
+
+            for(auto &j:d)
+            {
+
+                ll val1=i.first;
+                ll val2=j.first;
+
+                ll cost=i.second+j.second+abs(val1-val2);
+
+                res=min(res,cost);
+
+
+            }
+
+
+
+
+        }
+
+        cout<<res<<nl;
+
+
+
+
+    }
+
+}
