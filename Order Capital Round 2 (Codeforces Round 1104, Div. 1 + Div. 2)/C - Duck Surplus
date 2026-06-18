@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        vll a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+
+        ll ans=0;
+        ll total=a[0];
+        for(int i=1;i<n;i++)
+        {
+            if(total>a[i])
+            {
+                total+=a[i];
+
+
+            }
+            else
+            {
+                ans=max(ans,total);
+                total=a[i];
+
+
+            }
+
+
+
+
+        }
+
+        ans=max(ans,total);
+        cout<<ans<<nl;
+
+
+
+
+
+    }
+
+}
