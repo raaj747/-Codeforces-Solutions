@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        ll n,k;
+        cin>>n>>k;
+
+        ll ans=0;
+        ll cost=1;
+        while(cost<=n)
+        {
+            ll mn=min(k,n/cost);
+            ans+=mn;
+            n-=mn*cost;
+
+            if(cost>(1LL<<60)/2)
+            {
+                break;
+            }
+            cost<<=1;
+
+
+        }
+
+        cout<<ans<<nl;
+
+
+
+
+
+
+
+    }
+
+}
