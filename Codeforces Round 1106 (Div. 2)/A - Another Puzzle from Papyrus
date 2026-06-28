@@ -1,0 +1,92 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n,c;
+        cin>>n>>c;
+
+        vi a(n),b(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        for(int i=0;i<n;i++)
+        {
+            cin>>b[i];
+        }
+
+        int ans=INT_MAX;
+        int cnt=0;
+        bool ok=true;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]<b[i])
+            {
+                ok=false;
+                break;
+            }
+            cnt+=a[i]-b[i];
+
+
+
+        }
+
+        if(ok)
+        {
+            ans=min(ans,cnt);
+        }
+        sort(a.begin(),a.end());
+        sort(b.begin(),b.end());
+
+        ok=true;
+        cnt=c;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]<b[i])
+            {
+                ok=false;
+                break;
+            }
+            cnt+=a[i]-b[i];
+
+
+        }
+
+        if(ok)
+        {
+            ans=min(ans,cnt);
+        }
+
+        if(ans==INT_MAX)
+        {
+            cout<<-1<<nl;
+        }
+        else
+        {
+            cout<<ans<<nl;
+        }
+
+
+
+
+
+
+
+    }
+
+}
