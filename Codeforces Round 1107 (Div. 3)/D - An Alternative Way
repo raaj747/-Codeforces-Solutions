@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        vll a(n),b(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        for(int i=0;i<n;i++)
+        {
+            cin>>b[i];
+        }
+
+        ll c=0;
+        ll d=0;
+        bool ok=true;
+        for(int i=0;i<n;i++)
+        {
+            c+=a[i];
+            d+=b[i];
+
+            if(c>d)
+            {
+                ok=false;
+                break;
+
+
+            }
+
+
+
+        }
+
+        if(ok)
+        {
+            cout<<"YES"<<nl;
+        }
+        else
+        {
+            cout<<"NO"<<nl;
+        }
+
+
+
+
+
+
+
+    }
+
+}
