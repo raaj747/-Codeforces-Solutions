@@ -1,0 +1,149 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+
+        string s;
+        cin>>s;
+
+        bool ok1=true;
+        for(int i=1;i<n;i++)
+        {
+            if(s[i]!=s[0])
+            {
+                ok1=false;
+                break;
+
+
+            }
+
+
+        }
+        if(ok1)
+        {
+            cout<<1<<nl;
+            continue;
+        }
+
+        bool ok2=false;
+        for(int i=0;i<n &&!ok2;i++)
+        {
+            for(int j=i+2;j<n;j++)
+            {
+                int a=i;
+                int b=j;
+                bool pos=true;
+                while(a<b)
+                {
+                    if(s[a]!=s[b])
+                    {
+                        pos=false;
+                        break;
+
+                    }
+                    a++;
+                    b--;
+                }
+
+                if(!pos)
+                {
+                    continue;
+                }
+
+                bool zero=false;
+                bool one=false;
+                for(int k=i;k<=j;k++)
+                {
+                    if(s[k]=='0')
+                    {
+                        zero=true;
+                    }
+                    else
+                    {
+                        one=true;
+                    }
+
+                    if(zero&&one)
+                        break;
+
+
+                }
+
+                if(zero&&one)
+                {
+                    ok2=true;
+                    break;
+
+
+                }
+
+
+            }
+
+
+        }
+
+        if(ok2)
+        {
+            cout<<1<<nl;
+            continue;
+        }
+
+        bool ok3=false;
+        for(int i=0;i+1<n;i++)
+        {
+
+            if(s[i]==s[i+1])
+            {
+                ok3=true;
+                break;
+
+
+            }
+
+
+
+        }
+
+        if(ok3)
+        {
+            cout<<2<<nl;
+        }
+        else
+        {
+            cout<<n<<nl;
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
