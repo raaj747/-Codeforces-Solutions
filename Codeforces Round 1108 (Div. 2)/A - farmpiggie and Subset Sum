@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        vi a(n+1);
+        int even=2;
+        for(int i=1;i<=n;i+=2)
+        {
+            a[i]=even;
+            even+=2;
+        }
+
+        int odd=1;
+        for(int i=2;i<=n;i+=2)
+        {
+            a[i]=odd;
+            odd+=2;
+        }
+
+        for(int i=1;i<=n;i++)
+        {
+            cout<<a[i]<<" ";
+        }
+
+        cout<<nl;
+
+
+
+
+
+
+
+
+
+    }
+
+}
