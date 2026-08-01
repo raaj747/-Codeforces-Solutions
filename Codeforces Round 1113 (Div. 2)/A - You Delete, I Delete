@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        string s;
+        cin>>s;
+
+        string ans="";
+        int n=s.size();
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]!='0')
+            {
+                continue;
+            }
+            string a=s;
+            a.erase(a.begin()+i);
+
+            string mn="";
+            bool one=true;
+            int m=a.size();
+            for(int j=0;j<m;j++)
+            {
+                if(a[j]!='1')
+                {
+                    continue;
+                }
+                string b=a;
+                b.erase(b.begin()+j);
+
+                if(one||b<mn)
+                {
+                    mn=b;
+                    one=false;
+                }
+
+
+            }
+
+            if(ans=="" || mn>ans)
+            {
+                ans=mn;
+            }
+
+
+        }
+        cout<<ans<<nl;
+
+
+
+
+
+
+    }
+
+}
