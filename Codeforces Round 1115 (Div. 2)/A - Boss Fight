@@ -1,0 +1,69 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<long long>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<long long>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        int sum=0;
+        int ans=0;
+        int cnt=0;
+        int mx=0;
+        map<int,int>mp;
+        for(int i=0;i<n;i++)
+        {
+
+            int a;
+            cin>>a;
+            sum=sum+a;
+            mp[a]++;
+
+        }
+        for(auto i:mp)
+        {
+            if(i.second>mx)
+            {
+                mx=i.second;
+                cnt=i.first;
+            }
+
+        }
+        int half=(n+1)/2;
+        if(mx<=half)
+        {
+            cout<<sum<<nl;
+        }
+        else
+        {
+            int res=n-mx;
+            for(auto i:mp)
+            {
+                if(i.first!=cnt)
+                {
+                    ans+=i.first*i.second;
+                }
+
+            }
+            ans+=cnt*(res+2);
+            cout<<ans<<nl;
+
+        }
+
+    }
+
+}
