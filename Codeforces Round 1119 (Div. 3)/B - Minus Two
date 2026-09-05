@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const char nl = '\n';
+using vi = vector<int>;
+using vll = vector<ll>;
+using vs = vector<string>;
+using si = set<int>;
+using sll = set<ll>;
+using st = stack<int>;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+
+        int n;
+        cin>>n;
+
+        int odd=0;
+        int even1=0;
+        int even2=0;
+        for(int i=0;i<n;i++)
+        {
+            ll x;
+            cin>>x;
+            if(x%2==1)
+            {
+                odd++;
+            }
+            else
+            {
+                ll half=x/2;
+
+                if(half%2==0)
+                {
+                    even1++;
+                }
+                else
+                {
+                    even2++;
+                }
+
+
+
+            }
+
+
+
+        }
+
+        ll ans=max({odd,even1,even2});
+
+        cout<<ans<<nl;
+
+
+
+
+    }
+
+}
