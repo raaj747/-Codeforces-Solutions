@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int t = input.nextInt();
+        while (t-- > 0) {
+            long x = input.nextLong();
+            long y = input.nextLong();
+            long r = input.nextLong();
+
+            boolean found = false;
+            for (long i = 0; i <= r; i++) {
+                for (long j = 0; j <= r; j++) {
+                    if (i * i + j * j == r * r) {
+                        System.out.println((x + i) + " " + (y + j));
+                        found = true;
+                        break;
+                    }
+
+
+
+                }
+                if (found) {
+                    break;
+                }
+
+
+
+            }
+
+
+
+
+        }
+    }
+}
