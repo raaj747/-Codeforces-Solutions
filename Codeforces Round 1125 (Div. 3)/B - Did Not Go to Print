@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int t = input.nextInt();
+        while (t-- > 0) {
+            int n = input.nextInt();
+            String s = input.next();
+
+            Stack<Integer> st = new Stack<>();
+            boolean[] print = new boolean[n + 1];
+            for (int i = 1; i <= n; i++) {
+                char c = s.charAt(i - 1);
+
+                if (c == '1') {
+                    st.push(i);
+                }
+                else if (c == '2') {
+                    if (!st.empty()) {
+                        int x = st.pop();
+                        print[x] = true;
+                    }
+                    else {
+                        print[i] = true;
+                    }
+                }
+                else {
+                    print[i] = true;
+                }
+                
+
+            }
+
+            int cnt = 0;
+            for (int i = 1; i <= n; i++) {
+                if (!print[i]) {
+                    cnt++;
+                }
+                
+            }
+
+            System.out.println(cnt);
+            for (int i = 1; i <= n; i++) {
+                if (!print[i]) {
+                    System.out.print(i + " ");
+                }
+
+            }
+            System.out.println();
+
+
+
+        }
+    }
+}
